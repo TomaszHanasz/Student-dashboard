@@ -21,7 +21,6 @@
 }
 
 .swiper-slide {
-  background-color: bisque;
   border: 4px green solid;
   border-radius: 15px;
   background-position: center;
@@ -57,7 +56,8 @@
 
 .flash-cards__next-btn {
   display: block;
-  margin: 100px auto;
+  margin: 50px auto;
+  margin-top: 150px;
   width: 100px;
   height: 2rem;
 }

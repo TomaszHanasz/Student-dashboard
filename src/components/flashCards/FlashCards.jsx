@@ -29,10 +29,10 @@ const MenuProps = {
 };
 
 // checkbox categories
-const categories = ["React", "JS", "Html", "Css", "General"];
+const categories = ["React", "Js", "Html", "Css", "General"];
 
 const FlashCards = () => {
-  const [category, setCategory] = React.useState([]);
+  const [category, setCategory] = useState([]);
   const [currentCardId, setCurrentCardId] = useState(flashcards[0].id);
 
   const onClickNextCard = () => {
