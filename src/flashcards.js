@@ -1,66 +1,52 @@
 const flashcards = [
   {
     id: 1,
-    category: "react",
-    question: "What is useState?",
+    category: "",
+    question: "q1",
     answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
+      "q1use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 2,
-    category: "react",
-    question: "What is useState?",
+    category: "Js",
+    question: "q2",
     answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
+      "q2use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 3,
-    category: "react",
-    question: "What is useState?",
+    category: "Css",
+    question: "q3",
     answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
+      "q3use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 4,
-    category: "react",
-    question: "What is useState?",
+    category: "General",
+    question: "q4",
     answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
+      "q4use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 5,
-    category: "react",
-    question: "What is useState?",
+    category: "React",
+    question: "q5",
     answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
-  },
-  {
-    id: 5,
-    category: "react",
-    question: "What is useState?",
-    answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
-  },
-  {
-    id: 5,
-    category: "react",
-    question: "What is useState?",
-    answer:
-      "use state is a react hook that allows us to render pages dynamically. ",
+      "q5use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 6,
-    category: "css",
-    question: "What is block element?",
+    category: "React",
+    question: "q6",
     answer:
-      "block element is an html element which takes the whole width of its parent by default",
+      "q6use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 7,
-    category: "css",
-    question: "What is block element?",
+    category: "Html",
+    question: "q7",
     answer:
-      "block element is an html element which takes the whole width of its parent by default",
+      "q7use state is a react hook that allows us to render pages dynamically. ",
   },
   {
     id: 8,
@@ -78,6 +64,20 @@ const flashcards = [
   },
   {
     id: 10,
+    category: "css",
+    question: "What is block element?",
+    answer:
+      "block element is an html element which takes the whole width of its parent by default",
+  },
+  {
+    id: 11,
+    category: "css",
+    question: "What is block element?",
+    answer:
+      "block element is an html element which takes the whole width of its parent by default",
+  },
+  {
+    id: 12,
     category: "css",
     question: "What is block element?",
     answer:
