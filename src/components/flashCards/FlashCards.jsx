@@ -31,12 +31,15 @@ const MenuProps = {
 // checkbox categories
 const categories = ["React", "JS", "Html", "Css", "General"];
 
-const onSubmitCategoriesHandler = (e) => {
-  e.preventDefault();
-};
-
 const FlashCards = () => {
   const [category, setCategory] = React.useState([]);
+  const [currentCardId, setCurrentCardId] = useState(flashcards[0].id);
+
+  const onClickNextCard = () => {
+    const randomId = Math.floor(Math.random() * flashcards.length);
+    const randomCardId = flashcards[randomId].id;
+    setCurrentCardId(randomCardId);
+  };
 
   const handleChange = (event) => {
     const {
@@ -61,12 +64,11 @@ const FlashCards = () => {
             input={<OutlinedInput label="Category" />}
             renderValue={(selected) => selected.join(", ")}
             MenuProps={MenuProps}
-            onSubmit={onSubmitCategoriesHandler}
           >
-            {categories.map((category) => (
-              <MenuItem key={category} value={category}>
-                <Checkbox checked={category.indexOf(category) > -1} />
-                <ListItemText primary={category} />
+            {categories.map((el) => (
+              <MenuItem key={el} value={el}>
+                <Checkbox checked={category.includes(el)} />
+                <ListItemText primary={el} />
               </MenuItem>
             ))}
           </Select>
@@ -79,19 +81,21 @@ const FlashCards = () => {
         modules={[EffectFlip, Navigation]}
         className="mySwiper"
       >
-        {flashcards.map((el, index) => {
-          return (
-            <div key={index}>
-              <SwiperSlide>
-                <p className="flash-cards__question">{el.question}</p>
-              </SwiperSlide>
-              <SwiperSlide>
-                <p className="flash-cards__answer">{el.answer}</p>
-              </SwiperSlide>
-            </div>
-          );
-        })}
-        <button className="flash-cards__next-btn">Next card</button>
+        <div key={currentCardId}>
+          <SwiperSlide>
+            <p className="flash-cards__question">
+              {flashcards[currentCardId].question}
+            </p>
+          </SwiperSlide>
+          <SwiperSlide>
+            <p className="flash-cards__answer">
+              {flashcards[currentCardId].answer}
+            </p>
+          </SwiperSlide>
+        </div>
+        <button className="flash-cards__next-btn" onClick={onClickNextCard}>
+          Next card
+        </button>
       </Swiper>
     </>
   );

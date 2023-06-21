@@ -2,7 +2,15 @@
   --swiper-navigation-size: 500px;
   --swiper-theme-color: #00000000;
   --swiper-navigation-top-offset: 60%;
-  --swiper-navigation-sides-offset: 50px;
+  --swiper-navigation-sides-offset: 57px;
+}
+
+.swiper-button-next {
+  width: 400px;
+}
+
+.swiper-button-prev {
+  width: 400px;
 }
 
 .swiper {
