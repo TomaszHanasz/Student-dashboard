@@ -1,5 +1,5 @@
 import { flashcards } from "../../flashcards";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-flip";
@@ -34,6 +34,33 @@ const categories = ["React", "Js", "Html", "Css", "General"];
 const FlashCards = () => {
   const [category, setCategory] = useState([]);
   const [currentCardId, setCurrentCardId] = useState(flashcards[0].id);
+  const [checked, setChecked] = useState(false);
+  const [score, setScore] = useState(1);
+
+  useEffect(() => {
+    const updateScore = () => {
+      if (checked) {
+        setScore((prevScore) => prevScore + prevScore * 0.5);
+      } else {
+        setScore(0);
+      }
+      console.log("Score: ", score);
+    };
+    return updateScore();
+    // const checkbox = document.getElementById("checkbox");
+    // const correctAnsw = document.getElementById("correctAnsw");
+    // checkbox.addEventListener("click", updateScore);
+    // correctAnsw.addEventListener("click", updateScore);
+
+    // return () => {
+    //   checkbox.removeEventListener("click", updateScore);
+    //   correctAnsw.removeEventListener("click", updateScore);
+    // };
+  }, [checked]);
+
+  const onChangeCheck = () => {
+    setChecked(!checked);
+  };
 
   const onClickNextCard = () => {
     const randomId = Math.floor(Math.random() * flashcards.length);
@@ -96,6 +123,22 @@ const FlashCards = () => {
         <button className="flash-cards__next-btn" onClick={onClickNextCard}>
           Next card
         </button>
+        <div>
+          <label>
+            <input
+              className="flash-cards__checkbox"
+              type="checkbox"
+              checked={checked}
+              onChange={onChangeCheck}
+            />
+            I knew it
+          </label>
+        </div>
+        <div>
+          <p className="flash-cards__correctAnsw" id="correctAnsw">
+            correct answers {score} %
+          </p>
+        </div>
       </Swiper>
     </>
   );
