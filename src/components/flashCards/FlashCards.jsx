@@ -35,6 +35,7 @@ const FlashCards = () => {
   const [category, setCategory] = useState([]);
   const [currentCardId, setCurrentCardId] = useState(flashcards[0].id);
   const [checked, setChecked] = useState(false);
+   const [randomIndex, setRandomIndex] = useState(0);
   const [score, setScore] = useState(1);
 
   useEffect(() => {
@@ -63,16 +64,24 @@ const FlashCards = () => {
   };
 
   const onClickNextCard = () => {
-    const randomId = Math.floor(Math.random() * flashcards.length);
-    const randomCardId = flashcards[randomId].id;
-    setCurrentCardId(randomCardId);
+    const categoryFilter = flashcards.filter((el) => {
+      return category.includes(el.category);
+    });
+
+    if (categoryFilter.length === 0) {
+      console.log("No flashcards found for the selected categories.");
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * categoryFilter.length);
+    const randomCardIndex = categoryFilter[randomIndex].id - 1;
+    setRandomIndex(randomCardIndex);
+    console.log(category);
+    console.log(categoryFilter);
   };
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setCategory(typeof value === "string" ? value.split(",") : value);
+  const handleChange = (e) => {
+    setCategory(e.target.value);
   };
 
   return (
@@ -108,15 +117,15 @@ const FlashCards = () => {
         modules={[EffectFlip, Navigation]}
         className="mySwiper"
       >
-        <div key={currentCardId}>
+        <div key={randomIndex}>
           <SwiperSlide>
             <p className="flash-cards__question">
-              {flashcards[currentCardId].question}
+              {flashcards[randomIndex].question}
             </p>
           </SwiperSlide>
           <SwiperSlide>
             <p className="flash-cards__answer">
-              {flashcards[currentCardId].answer}
+              {flashcards[randomIndex].answer}
             </p>
           </SwiperSlide>
         </div>
