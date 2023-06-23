@@ -54,10 +54,25 @@
   justify-content: center;
 }
 
-.flash-cards__next-btn {
+.flesh-cards {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.flash-cards__inotknow-btn {
   display: block;
   margin: 50px auto;
   margin-top: 132px;
+  margin-bottom: 25px;
+  width: 100px;
+  height: 2rem;
+}
+
+.flash-cards__iknow-btn {
+  display: block;
+  margin: 50px auto;
+  margin-top: 5px;
   margin-bottom: 25px;
   width: 100px;
   height: 2rem;

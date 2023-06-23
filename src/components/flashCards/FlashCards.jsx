@@ -34,26 +34,34 @@ const categories = ["React", "Js", "Html", "Css", "General"];
 const FlashCards = () => {
   const [category, setCategory] = useState([]);
   const [randomIndex, setRandomIndex] = useState(0);
-  const [checked, setChecked] = useState(false);
   const [countCards, setCountCards] = useState(0);
   const [score, setScore] = useState(0);
 
-  useEffect(() => {
-    const updateScore = () => {
-      if (checked === true) {
-        setScore((score + 100) / countCards);
-      } else if (checked === false) {
-        setScore(score);
-      }
-      console.log("Score: ", score);
-    };
-    setChecked(false);
-    return updateScore();
-  }, [countCards]);
+  const onClickIknow = () => {
+    setScore(score + 1);
+    setCountCards(countCards + 1);
+    onClickNextCard();
 
-  const onChangeCheck = () => {
-    setChecked(!checked);
+    console.log(score);
   };
+
+  const onClickIdontknow = () => {
+    setCountCards(countCards + 1);
+    onClickNextCard();
+  };
+
+  // useEffect(() => {
+  //   const updateScore = () => {
+  //     if (checked === true) {
+  //       setScore(score + 1);
+  //     } else if (checked === false) {
+  //       // setScore((score + 0) / countCards);
+  //     }
+  //     console.log("Score: ", score);
+  //   };
+  //   setChecked(false);
+  //   return updateScore();
+  // }, [countCards]);
 
   const onClickNextCard = () => {
     const categoryFilter = flashcards.filter((el) => {
@@ -121,23 +129,24 @@ const FlashCards = () => {
             </p>
           </SwiperSlide>
         </div>
-        <button className="flash-cards__next-btn" onClick={onClickNextCard}>
-          Next card
-        </button>
-        <div>
-          <label>
-            <input
-              className="flash-cards__checkbox"
-              type="checkbox"
-              checked={checked}
-              onChange={onChangeCheck}
-            />
-            I knew it
-          </label>
+        <div className="flesh-cards">
+          <button
+            className="flash-cards__inotknow-btn"
+            onClick={onClickIdontknow}
+          >
+            I don't know it
+          </button>
+          <button className="flash-cards__iknow-btn" onClick={onClickIknow}>
+            I know it
+          </button>
         </div>
         <div>
           <p className="flash-cards__correctAnsw" id="correctAnsw">
-            correct answers {score} %
+            correct answers {score} out of {countCards}
+          </p>
+          <p className="flash-cards__correctAnsw" id="correctAnsw">
+            your score is{" "}
+            {countCards ? ((score / countCards) * 100).toFixed(2) : 0}%
           </p>
         </div>
       </Swiper>
