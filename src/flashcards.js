@@ -15,7 +15,7 @@ const flashcards = [
   },
   {
     id: 3,
-    category: "Css",
+    category: "CSS",
     question: "q3",
     answer:
       "q3use state is a react hook that allows us to render pages dynamically. ",
@@ -29,7 +29,7 @@ const flashcards = [
   },
   {
     id: 5,
-    category: "React",
+    category: "react",
     question: "q5",
     answer:
       "q5use state is a react hook that allows us to render pages dynamically. ",
