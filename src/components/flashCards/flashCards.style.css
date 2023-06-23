@@ -49,8 +49,8 @@
   justify-content: center;
   position: absolute;
   text-align: center;
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -62,8 +62,8 @@
   justify-content: center;
   position: absolute;
   text-align: center;
-  width: 80%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -118,11 +118,5 @@
 
   .swiper-slide {
     font-size: 1rem;
-  }
-
-  @media screen and (max-width: 500px) {
-    .swiper-slide {
-      font-size: 0.9rem;
-    }
   }
 }
