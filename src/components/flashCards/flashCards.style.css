@@ -1,49 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 :root {
   --swiper-navigation-size: 500px;
   --swiper-theme-color: #00000000;
-  --swiper-navigation-top-offset: 60%;
-  --swiper-navigation-sides-offset: 57px;
+  --swiper-navigation-top-offset: 36%;
+  --swiper-navigation-sides-offset: 0px;
+}
+
+.flash-cards__app {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .swiper-button-next {
-  width: 400px;
+  width: 700px;
 }
 
 .swiper-button-prev {
-  width: 400px;
+  width: 700px;
 }
 
 .swiper {
-  width: 500px;
-  height: 500px;
-  padding: 50px;
+  width: 700px;
+  height: 700px;
   position: relative;
 }
 
 .swiper-slide {
-  border: 4px green solid;
+  font-size: 1.3rem;
+  border: 1px rgb(92, 92, 92) solid;
   border-radius: 15px;
   background-position: center;
   background-size: cover;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
+}
+
+.swiper-wrapper {
+  height: fit-content;
 }
 
 .flash-cards__question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   text-align: center;
-  width: 80%;
-  height: auto;
+  width: 95%;
+  height: 95%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .flash-cards__answer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   text-align: center;
-  width: 80%;
-  height: auto;
+  width: 95%;
+  height: 95%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -52,17 +72,56 @@
 .flash-cards__categories__checkbox {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.flash-cards__next-btn {
+.flesh-cards__btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px auto;
+}
+
+.flash-cards__inotknow-btn {
   display: block;
-  margin: 50px auto;
-  margin-top: 150px;
-  width: 100px;
+  width: 150px;
   height: 2rem;
   background-color: green;
   border-radius: 10px;
 }
 .flash-cards__next-btn:hover {
   cursor: pointer;
+}
+
+.flash-cards__iknow-btn {
+  display: block;
+  width: 150px;
+  height: 2rem;
+}
+
+.flash-cards__score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 3rem;
+}
+
+.flash-cards__start {
+  text-align: center;
+  line-height: 3rem;
+}
+
+.flash-cards__end {
+  text-align: center;
+  line-height: 3rem;
+}
+
+@media screen and (max-width: 750px) {
+  .swiper {
+    width: 100%;
+  }
+
+  .swiper-slide {
+    font-size: 1rem;
+  }
 }
