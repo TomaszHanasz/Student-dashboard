@@ -65,7 +65,9 @@ const FlashCards = () => {
 
   const onClickNextCard = () => {
     const categoryFilter = flashcards.filter((el) => {
-      return category.includes(el.category);
+      return category
+        .map((el) => el.toLowerCase())
+        .includes(el.category.toLowerCase());
     });
 
     if (categoryFilter.length === 0) {
@@ -77,11 +79,40 @@ const FlashCards = () => {
     const randomCardIndex = categoryFilter[randomIndex].id - 1;
     setCountCards(countCards + 1);
     setRandomIndex(randomCardIndex);
-    console.log(countCards);
   };
 
   const handleChange = (e) => {
     setCategory(e.target.value);
+  };
+
+  const SelectNumberOfCards = () => {
+    const [numberOfCards, setNumberOfCards] = React.useState(0);
+
+    const handleChange = (event) => {
+      setNumberOfCards(event.target.value);
+    };
+
+    return (
+      <div>
+        <FormControl sx={{ m: 1, minWidth: 400 }}>
+          <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-autowidth-label"
+            id="demo-simple-select-autowidth"
+            value={numberOfCards}
+            onChange={handleChange}
+            label="Number of cards"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Twenty</MenuItem>
+            <MenuItem value={21}>Twenty one</MenuItem>
+            <MenuItem value={22}>Twenty one and a half</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+    );
   };
 
   return (
@@ -108,6 +139,7 @@ const FlashCards = () => {
               </MenuItem>
             ))}
           </Select>
+          <SelectNumberOfCards />
         </FormControl>
       </div>
       <Swiper
@@ -120,12 +152,16 @@ const FlashCards = () => {
         <div key={randomIndex}>
           <SwiperSlide>
             <p className="flash-cards__question">
-              {flashcards[randomIndex].question}
+              {category.length === 0
+                ? "Select category"
+                : flashcards[randomIndex].question}
             </p>
           </SwiperSlide>
           <SwiperSlide>
             <p className="flash-cards__answer">
-              {flashcards[randomIndex].answer}
+              {category.length === 0
+                ? "Select category"
+                : flashcards[randomIndex].answer}
             </p>
           </SwiperSlide>
         </div>
