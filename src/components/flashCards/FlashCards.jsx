@@ -33,31 +33,23 @@ const categories = ["React", "Js", "Html", "Css", "General"];
 
 const FlashCards = () => {
   const [category, setCategory] = useState([]);
-  const [currentCardId, setCurrentCardId] = useState(flashcards[0].id);
+  const [randomIndex, setRandomIndex] = useState(0);
   const [checked, setChecked] = useState(false);
-   const [randomIndex, setRandomIndex] = useState(0);
-  const [score, setScore] = useState(1);
+  const [countCards, setCountCards] = useState(0);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const updateScore = () => {
-      if (checked) {
-        setScore((prevScore) => prevScore + prevScore * 0.5);
-      } else {
-        setScore(0);
+      if (checked === true) {
+        setScore((score + 100) / countCards);
+      } else if (checked === false) {
+        setScore(score);
       }
       console.log("Score: ", score);
     };
+    setChecked(false);
     return updateScore();
-    // const checkbox = document.getElementById("checkbox");
-    // const correctAnsw = document.getElementById("correctAnsw");
-    // checkbox.addEventListener("click", updateScore);
-    // correctAnsw.addEventListener("click", updateScore);
-
-    // return () => {
-    //   checkbox.removeEventListener("click", updateScore);
-    //   correctAnsw.removeEventListener("click", updateScore);
-    // };
-  }, [checked]);
+  }, [countCards]);
 
   const onChangeCheck = () => {
     setChecked(!checked);
@@ -75,9 +67,9 @@ const FlashCards = () => {
 
     const randomIndex = Math.floor(Math.random() * categoryFilter.length);
     const randomCardIndex = categoryFilter[randomIndex].id - 1;
+    setCountCards(countCards + 1);
     setRandomIndex(randomCardIndex);
-    console.log(category);
-    console.log(categoryFilter);
+    console.log(countCards);
   };
 
   const handleChange = (e) => {
