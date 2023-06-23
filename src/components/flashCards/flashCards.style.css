@@ -60,4 +60,9 @@
   margin-top: 150px;
   width: 100px;
   height: 2rem;
+  background-color: green;
+  border-radius: 10px;
+}
+.flash-cards__next-btn:hover {
+  cursor: pointer;
 }
