@@ -1,26 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-:root {
-  --swiper-navigation-size: 700px;
-  --swiper-theme-color: #00000000;
-  --swiper-navigation-top-offset: 50%;
-  --swiper-navigation-sides-offset: 0px;
-}
-
 .flash-cards__app {
   font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.swiper-button-next {
-  width: 700px;
-}
-
-.swiper-button-prev {
-  width: 700px;
 }
 
 .swiper {

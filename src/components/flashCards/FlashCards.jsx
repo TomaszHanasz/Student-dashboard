@@ -3,9 +3,7 @@ import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-flip";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { EffectFlip, Navigation } from "swiper";
+import { EffectFlip } from "swiper";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -90,8 +88,8 @@ const FlashCards = () => {
 
   // number of cards selection
   const SelectNumberOfCards = () => {
-    const handleChangeNrCards = (event) => {
-      setNumberOfCards(event.target.value);
+    const handleChangeNrCards = (e) => {
+      setNumberOfCards(e.target.value);
     };
 
     return (
@@ -194,20 +192,19 @@ const FlashCards = () => {
           <Swiper
             effect={"flip"}
             grabCursor={true}
-            navigation={true}
-            modules={[EffectFlip, Navigation]}
+            modules={[EffectFlip]}
             className="mySwiper"
             initialSlide={0}
             ref={swiperRef}
             roundLengths={true}
           >
             <div key={randomIndex}>
-              <SwiperSlide>
+              <SwiperSlide onClick={() => handleSlideTo(1)}>
                 <p className="flash-cards__question">
                   {flashcards[randomIndex].question}
                 </p>
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide onClick={() => handleSlideTo(0)}>
                 <p className="flash-cards__answer">
                   {flashcards[randomIndex].answer}
                 </p>
