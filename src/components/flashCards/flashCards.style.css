@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 :root {
-  --swiper-navigation-size: 500px;
+  --swiper-navigation-size: 700px;
   --swiper-theme-color: #00000000;
-  --swiper-navigation-top-offset: 36%;
+  --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 0px;
 }
 
