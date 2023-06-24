@@ -90,8 +90,8 @@ const FlashCards = () => {
 
   // number of cards selection
   const SelectNumberOfCards = () => {
-    const handleChangeNrCards = (event) => {
-      setNumberOfCards(event.target.value);
+    const handleChangeNrCards = (e) => {
+      setNumberOfCards(e.target.value);
     };
 
     return (
