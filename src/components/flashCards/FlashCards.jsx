@@ -1,5 +1,5 @@
 import { flashcards } from "../../flashcards";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-flip";
@@ -40,17 +40,26 @@ const FlashCards = () => {
   const [numberOfCards, setNumberOfCards] = useState("");
   const [startFlashCards, setStartFlashCards] = useState(false);
 
+  // go to initial slide
+  const swiperRef = useRef(null);
+
+  const handleSlideTo = (slide) => {
+    swiperRef.current.swiper.slideTo(slide);
+  };
+
   // click I know the answer
   const onClickIknow = () => {
     setScore(score + 1);
     setCountCards(countCards + 1);
     onClickNextCard();
+    handleSlideTo(0);
   };
 
   // click I didnt know the answer
   const onClickIdontknow = () => {
     setCountCards(countCards + 1);
     onClickNextCard();
+    handleSlideTo(0);
   };
 
   // draw next card
@@ -188,6 +197,9 @@ const FlashCards = () => {
             navigation={true}
             modules={[EffectFlip, Navigation]}
             className="mySwiper"
+            initialSlide={0}
+            ref={swiperRef}
+            roundLengths={true}
           >
             <div key={randomIndex}>
               <SwiperSlide>
